@@ -1,0 +1,15 @@
+@import url('https://fonts.cdnfonts.com/css/opendyslexic');
+@import "tailwindcss";
+
+@theme {
+    --font-display: 'OpenDyslexic', sans-serif;
+    --font-opendyslexic: 'OpenDyslexic', sans-serif;
+}
+
+:root {
+    font-family: var(--font-opendyslexic);
+}
+
+.font-opendyslexic {
+    font-family: var(--font-opendyslexic);
+}

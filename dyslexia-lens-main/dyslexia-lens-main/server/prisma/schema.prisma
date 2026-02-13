@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  password String?
+  firebaseUid String? @unique
+  name     String?
+  createdAt DateTime @default(now())
+  lastLoginDate DateTime @default(now())
+  xp       Int      @default(0)
+  level    Int      @default(1)
+  streak   Int      @default(0)
+  totalWordsRead Int @default(0)
+  totalTimeSeconds Int @default(0)
+  documents Document[]
+}
+
+model Document {
+  id        Int      @id @default(autoincrement())
+  fileName  String
+  fileType  String
+  data      Bytes
+  uploadDate DateTime @default(now())
+  lastPage  Int      @default(1)
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
